@@ -19,7 +19,7 @@ namespace ConsoleApp
 
             try {
                 var text = File.ReadAllLines(fileSource).ToList();
-                var targetText = text.Select((t, i) => $"Case #{i}: {converter.CodingMessage(t)}").ToList();                
+                var targetText = text.Select(t => converter.CodingMessage(t)).Where(t => !string.IsNullOrEmpty(t)).Select((t, i) => $"Case #{i}: {t}").ToList();
                 using(var targetFile = File.CreateText(fileTarget)){
                     targetText.ForEach(t => targetFile.WriteLine(t));
                 }

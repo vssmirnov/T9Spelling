@@ -33,9 +33,9 @@ For each test case, output one line containing "Case #x: " followed by the messa
 
 ```text
 Input           Output 
-4               Case #1: 44 444
-hi              Case #2: 999337777
-yes             Case #3: 333666 6660 022 2777
-foo  bar        Case #4: 4433555 555666096667775553
-hello world
+4               
+hi              Case #1: 44 444
+yes             Case #2: 999337777
+foo  bar        Case #3: 333666 6660 0222777
+hello world     Case #4: 4433555 555666096667775553
 ```

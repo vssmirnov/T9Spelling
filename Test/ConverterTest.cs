@@ -18,7 +18,7 @@ namespace Test
         {
             var converter = new Converter(fakeLogger.Object);
 
-            Assert.AreEqual("222222", converter.CodingMessage("abc"));
+            Assert.AreEqual("2 22 222", converter.CodingMessage("abc"));
         }
         
         [TestMethod]
@@ -26,7 +26,7 @@ namespace Test
         {
             var converter = new Converter(fakeLogger.Object);
 
-            Assert.AreEqual("333333", converter.CodingMessage("def"));
+            Assert.AreEqual("3 33 333", converter.CodingMessage("def"));
         }
 
         [TestMethod]
@@ -34,7 +34,7 @@ namespace Test
         {
             var converter = new Converter(fakeLogger.Object);
 
-            Assert.AreEqual("444444", converter.CodingMessage("ghi"));
+            Assert.AreEqual("4 44 444", converter.CodingMessage("ghi"));
         }
 
         [TestMethod]
@@ -42,7 +42,7 @@ namespace Test
         {
             var converter = new Converter(fakeLogger.Object);
 
-            Assert.AreEqual("555555", converter.CodingMessage("jkl"));
+            Assert.AreEqual("5 55 555", converter.CodingMessage("jkl"));
         }
 
         [TestMethod]
@@ -50,7 +50,7 @@ namespace Test
         {
             var converter = new Converter(fakeLogger.Object);
 
-            Assert.AreEqual("666666", converter.CodingMessage("mno"));
+            Assert.AreEqual("6 66 666", converter.CodingMessage("mno"));
         }
 
         [TestMethod]
@@ -58,7 +58,7 @@ namespace Test
         {
             var converter = new Converter(fakeLogger.Object);
 
-            Assert.AreEqual("7777777777", converter.CodingMessage("pqrs"));
+            Assert.AreEqual("7 77 777 7777", converter.CodingMessage("pqrs"));
         }
 
         [TestMethod]
@@ -66,7 +66,7 @@ namespace Test
         {
             var converter = new Converter(fakeLogger.Object);
 
-            Assert.AreEqual("888888", converter.CodingMessage("tuv"));
+            Assert.AreEqual("8 88 888", converter.CodingMessage("tuv"));
         }
 
         [TestMethod]
@@ -74,7 +74,7 @@ namespace Test
         {
             var converter = new Converter(fakeLogger.Object);
 
-            Assert.AreEqual("9999999999", converter.CodingMessage("wxyz"));
+            Assert.AreEqual("9 99 999 9999", converter.CodingMessage("wxyz"));
         }
 
         [TestMethod]
@@ -90,15 +90,7 @@ namespace Test
         {
             var converter = new Converter(fakeLogger.Object);
 
-            Assert.AreEqual("", converter.CodingMessage("1"));
-        }
-
-        [TestMethod]
-        public void CodingMessage_Symbol_EndMessage_Test()
-        {
-            var converter = new Converter(fakeLogger.Object);
-
-            Assert.AreEqual(Constants.EndMessage.ToString(), converter.CodingMessage(Constants.EndMessage.ToString()));
+            Assert.AreEqual(string.Empty, converter.CodingMessage("1"));
         }
 
         [TestMethod]
@@ -110,11 +102,35 @@ namespace Test
         }
 
         [TestMethod]
-        public void CodingMessage_Real_Text_Test()
+        public void CodingMessage_hi_Test()
         {
             var converter = new Converter(fakeLogger.Object);
 
-            Assert.AreEqual("833777780633", converter.CodingMessage("test me"));
+            Assert.AreEqual("44 444", converter.CodingMessage("hi"));
+        }
+
+        [TestMethod]
+        public void CodingMessage_Yes_Test()
+        {
+            var converter = new Converter(fakeLogger.Object);
+
+            Assert.AreEqual("999337777", converter.CodingMessage("yes"));
+        }
+
+        [TestMethod]
+        public void CodingMessage_Foo__Bar_Test()
+        {
+            var converter = new Converter(fakeLogger.Object);
+
+            Assert.AreEqual("333666 6660 022 2777", converter.CodingMessage("foo  bar"));
+        }
+
+        [TestMethod]
+        public void CodingMessage_Hello__World_Test()
+        {
+            var converter = new Converter(fakeLogger.Object);
+
+            Assert.AreEqual("4433555 555666096667775553", converter.CodingMessage("hello world"));
         }
     }
 }

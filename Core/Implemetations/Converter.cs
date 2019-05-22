@@ -23,14 +23,15 @@ namespace Core
                 {'7', "pqrs"},
                 {'8', "tuv"},
                 {'9', "wxyz"},
-                {Constants.CodeZero, " "}
+                {Constants.CodeZero, " "},
+                {Constants.EndMessage, new string(Constants.EndMessage, 1)}
             };
         }    
 
         private string ConvertFromSymbolToDigitalsCode(char symbol){
             var code = codes.FirstOrDefault(t => t.Value.Contains(symbol));
             if (default(KeyValuePair<char, string>).Equals(code)) {
-                logger.Write("Символ не найден", LogType.Error);
+                logger.Write("Символ не найден");
                 return string.Empty;
             }
             return new string(code.Key, code.Value.IndexOf(symbol) + 1);
@@ -40,18 +41,19 @@ namespace Core
             var builder = new StringBuilder();
             logger.Write($"Start coding message: {message}", LogType.Debug);
 
-            var previousSymbol = Constants.EndMessage;
+            char previousCode = char.MinValue;
                 
             foreach(char symbol in message) {
-                if (previousSymbol == symbol && previousSymbol != Constants.EndMessage)
+                var codes = ConvertFromSymbolToDigitalsCode(symbol);
+                if (string.IsNullOrEmpty(codes))
+                    continue;
+                var currentCode = codes.First();
+
+                if (previousCode != char.MinValue && previousCode == currentCode)
                     builder.Append(Constants.CharSplitter);
 
-                if (symbol == Constants.EndMessage)
-                    builder.Append(Constants.EndMessage);                
-                else
-                    builder.Append(ConvertFromSymbolToDigitalsCode(symbol));
-
-                previousSymbol = symbol;
+                builder.Append(codes);
+                previousCode = currentCode;
             }
 
             var result = builder.ToString();
