@@ -19,12 +19,12 @@ namespace ConsoleApp
 
             try {
                 var text = File.ReadAllLines(fileSource).ToList();
-                var targetText = text.Select(t => converter.CodingMessage(t)).ToList();                
+                var targetText = text.Select((t, i) => $"Case #{i}: {converter.CodingMessage(t)}").ToList();                
                 using(var targetFile = File.CreateText(fileTarget)){
                     targetText.ForEach(t => targetFile.WriteLine(t));
                 }
             } catch (Exception ex) {
-                logger.Wrtie(ex.Message, LogType.Error);
+                logger.Write(ex.Message, LogType.Error);
             }
 
             logger.Write($"Finished the handling: {fileSource}");

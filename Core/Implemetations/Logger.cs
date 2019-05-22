@@ -9,7 +9,7 @@ namespace Core
             Console.WriteLine(message, LogType.Information);
         }
 
-        public void Wrtie(string message, LogType type){
+        public void Write(string message, LogType type){
             Console.WriteLine(type + ": " + message);
         }
     }

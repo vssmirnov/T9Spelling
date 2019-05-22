@@ -100,5 +100,21 @@ namespace Test
 
             Assert.AreEqual(Constants.EndMessage.ToString(), converter.CodingMessage(Constants.EndMessage.ToString()));
         }
+
+        [TestMethod]
+        public void CodingMessage_DoubleSymbol_A_Test()
+        {
+            var converter = new Converter(fakeLogger.Object);
+
+            Assert.AreEqual("2 2", converter.CodingMessage("aa"));
+        }
+
+        [TestMethod]
+        public void CodingMessage_Real_Text_Test()
+        {
+            var converter = new Converter(fakeLogger.Object);
+
+            Assert.AreEqual("833777780633", converter.CodingMessage("test me"));
+        }
     }
 }
