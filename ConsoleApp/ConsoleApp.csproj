@@ -2,6 +2,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj" />
+    <None Include="Resources\C-large-practice.in" CopyToOutputDirectory="Always" />
+    <None Include="Resources\C-small-practice.in" CopyToOutputDirectory="Always" />
+  </ItemGroup>
+
+  <ItemGroup>
+    
   </ItemGroup>
 
   <PropertyGroup>
